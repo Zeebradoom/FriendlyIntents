@@ -2,6 +2,24 @@
 
 Project initialized using [@stackr/sdk](https://www.stackrlabs.xyz/)
 
+Presentation:
+https://drive.google.com/file/d/1JC0y5OjeIFcBQaZOaEpB4bAUXjKKd7Yx/view?usp=sharing
+
+Tech used:
+Avail + Stackr
+Chronicle used as Oracle on-chain
+XMTP Message Lit queries Stackr for the intents, broadcasts it to friends (with decryption key)
+Lit protocol for key management, onboarding, etc
+LayerZero for cross chain communication
+
+Step by step:
+
+1. User sends the encryped intent + funds to the contract, housed on the Stackr (with Avail DA) chain
+2. User send the decryption key to friends/people they want to fulfil the intent
+3. Friends, who use Lit protocol, query the chain to view the intent. The contract uses Chronicle as the price oracle.
+4. Friend fills intent on the final chain, its verified with Layer Zero.
+5. Friend receieves the funds on the original chain.
+
 ## Project structure
 
 ```bash
@@ -17,7 +35,7 @@ Project initialized using [@stackr/sdk](https://www.stackrlabs.xyz/)
 │   ├── server.ts ## -> server setup if any in the example.
 │   ├── cli.ts ## -> CLI interaction setup if any in the example.
 │   ├── contract ## -> place to keep your utility Contracts (like Bridge contract)
-│   │   └──Contract.sol 
+│   │   └──Contract.sol
 │   ├── stackr
 │       ├── machine.ts ## -> preferred place to keep your State Machine(s) and export from
 │       ├── mru.ts ## -> place to initialize your MicroRollup
@@ -69,10 +87,10 @@ In you application, add Playground by importing the following:
 
 ```ts
 import { Playground } from "@stackr/sdk/plugins";
- 
+
 const rollup = ...
 await rollup.init();
- 
+
 Playground.init(rollup);
 // this will start a server at http://localhost:42069, which is taken as input by the Playground
 ```

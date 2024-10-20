@@ -16,6 +16,7 @@ const mintToken = BridgeState.STF({
       state.push({
         address: inputs.address,
         balance: inputs.amount,
+        oraclePrice: state.
       });
     } else {
       state[accountIdx].balance += inputs.amount;
@@ -25,6 +26,22 @@ const mintToken = BridgeState.STF({
   },
 });
 
+type UpdateOracelPriceInput = {
+  price: string;
+  timestamp: number;
+};
+
+const updateOraclePrice: STF<BridgeState, UpdateOracelPriceInput> = {
+  handler: ({ state, inputs, msgSender }) => {
+    const { price, timestamp } = inputs;
+
+    state.bridgeState.price = price;
+
+    return state;
+  },
+};
+
 export const transitions: Transitions<BridgeState> = {
   mintToken,
+  updateOraclePrice,
 };
