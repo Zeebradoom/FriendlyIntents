@@ -3,7 +3,7 @@
 Project initialized using [@stackr/sdk](https://www.stackrlabs.xyz/)
 
 Presentation:
-https://drive.google.com/file/d/1JC0y5OjeIFcBQaZOaEpB4bAUXjKKd7Yx/view?usp=sharing
+https://drive.google.com/drive/folders/1AnQq3-L6scJ5i2VFYQ-_oLemnFttZijj?usp=sharing
 
 Tech used:
 Avail + Stackr
@@ -14,11 +14,11 @@ LayerZero for cross chain communication
 
 Step by step:
 
-1. User sends the encryped intent + funds to the contract, housed on the Stackr (with Avail DA) chain
-2. User send the decryption key to friends/people they want to fulfil the intent
-3. Friends, who use Lit protocol, query the chain to view the intent. The contract uses Chronicle as the price oracle.
-4. Friend fills intent on the final chain, its verified with Layer Zero.
-5. Friend receieves the funds on the original chain.
+1. Users use Lit protocol to encrypt messages
+2. Encryted message sent to stackr (using Avail DA) chain
+3. Message propogated to other chains (Rootstock) using LayerZero
+4. Friends get told about the decryption key via MessageKit group chat
+5. Any friend (using Lit decryption) can fill the intent!
 
 ## Project structure
 
